@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ola's Baking Portfolio — handcrafted treats made to give you a great taste." />
+    <title>Ola | Baker & Pastry Artist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --white: #ffffff;
+    --cream-50: #fdf8f0;
+    --cream-100: #faefd8;
+    --cream-200: #f5ddb0;
+    --amber-400: #f5a623;
+    --amber-500: #e8941a;
+    --amber-600: #d4800f;
+    --brown-600: #7a4f2e;
+    --brown-700: #5c3820;
+    --brown-800: #3d2510;
+    --brown-900: #2a1a0a;
+    --hero-gradient: linear-gradient(135deg, #fdf3e3 0%, #fae8c0 50%, #f5d99a 100%);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', system-ui, sans-serif;
+    --shadow-md: 0 4px 6px -1px rgb(120 70 20 / .12), 0 2px 4px -2px rgb(120 70 20 / .08);
+    --shadow-xl: 0 20px 25px -5px rgb(120 70 20 / .15), 0 8px 10px -6px rgb(120 70 20 / .10);
+    --radius-full: 9999px;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1.25rem;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--brown-900); background-color: var(--cream-50); line-height: 1.6; }
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+.container { width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 1rem; }
+
+/* Header */
+#site-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    background-color: rgba(253,248,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cream-200);
+    z-index: 50;
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+.logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--brown-800); }
+.nav-desktop { display: none; gap: 2rem; }
+.nav-link { font-size: 1rem; color: var(--brown-700); font-weight: 500; transition: color .15s; }
+.nav-link:hover { color: var(--amber-500); }
+.hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.5rem; height: 2.5rem; padding: 0.5rem; }
+.bar { display: block; width: 100%; height: 2px; background-color: var(--brown-700); border-radius: 2px; transition: transform .3s, opacity .3s; transform-origin: center; }
+.hamburger[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile { border-top: 1px solid var(--cream-200); padding: 1rem 0; background-color: var(--cream-50); }
+.nav-mobile[hidden] { display: none; }
+.mobile-link { display: block; padding: 0.5rem 0; }
+
+/* Hero */
+.hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: var(--hero-gradient); padding-top: 4rem; position: relative; overflow: hidden;
+}
+.hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 20% 80%, rgba(245,166,35,.18) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(212,128,15,.12) 0%, transparent 50%);
+    pointer-events: none;
+}
+.hero-content { text-align: center; position: relative; z-index: 1; padding: 0 1rem; }
+.hero-badge {
+    display: inline-block; background-color: var(--amber-400); color: var(--white);
+    font-size: 0.875rem; font-weight: 600; padding: 0.35rem 1rem; border-radius: var(--radius-full);
+    margin-bottom: 1.5rem; letter-spacing: 0.04em; text-transform: uppercase;
+    animation: fadeInDown .5s ease both;
+}
+.hero-title {
+    font-family: var(--font-display); font-size: 3rem; font-weight: 800;
+    color: var(--brown-800); margin-bottom: 1rem; line-height: 1.1;
+    animation: fadeInDown .7s .1s ease both;
+}
+.hero-subtitle {
+    font-size: 1.25rem; color: var(--brown-600); max-width: 36rem;
+    margin: 0 auto 1.5rem; animation: fadeInUp .7s .2s ease both;
+}
+.hero-pills {
+    display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+    margin-bottom: 2rem; animation: fadeInUp .7s .25s ease both;
+}
+.hero-pill {
+    background-color: rgba(255,255,255,0.7); border: 1.5px solid var(--amber-400);
+    color: var(--brown-700); font-size: 0.875rem; font-weight: 600;
+    padding: 0.3rem 1rem; border-radius: var(--radius-full);
+}
+.hero-cta {
+    display: inline-block; background-color: var(--amber-500); color: var(--white);
+    font-size: 1.125rem; font-weight: 600; padding: 1rem 2rem; border-radius: var(--radius-full);
+    transition: background-color .2s, transform .2s, box-shadow .2s;
+    animation: fadeInUp .7s .3s ease both;
+    box-shadow: 0 4px 14px rgba(232,148,26,.35);
+}
+.hero-cta:hover { background-color: var(--amber-600); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,148,26,.45); }
+
+/* Section helpers */
+.section-title { font-family: var(--font-display); font-size: 2.25rem; font-weight: 700; text-align: center; color: var(--brown-800); margin-bottom: 2rem; }
+.section-subtitle { text-align: center; color: var(--brown-600); max-width: 42rem; margin: 0 auto 4rem; }
+
+/* About */
+.about { padding: 5rem 0; background-color: var(--white); }
+.about-intro { max-width: 48rem; margin: 0 auto 4rem; text-align: center; }
+.about-intro p { font-size: 1.125rem; color: var(--brown-700); line-height: 1.8; }
+.skills-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.skill-card {
+    display: flex; flex-direction: column; align-items: center; padding: 2rem;
+    border-radius: var(--radius-2xl); background-color: var(--cream-50);
+    border: 1.5px solid var(--cream-200); text-align: center;
+    transition: transform .2s, box-shadow .2s;
+}
+.skill-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); }
+.skill-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.skill-card h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--brown-800); margin-bottom: 0.5rem; }
+.skill-card p { color: var(--brown-600); line-height: 1.6; }
+
+/* Gallery */
+.gallery { padding: 5rem 0; background-color: var(--cream-50); }
+.gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.gallery-item { position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--shadow-md); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.gallery-item:hover img { transform: scale(1.07); }
+.gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(58,32,10,.75) 0%, transparent 100%);
+    color: var(--white); font-size: 0.875rem; font-weight: 600;
+    padding: 1.5rem 1rem 0.75rem; text-align: center;
+}
+
+/* Projects */
+.projects { padding: 5rem 0; background-color: var(--white); }
+.projects-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.project-card {
+    background-color: var(--cream-50); border-radius: var(--radius-2xl); overflow: hidden;
+    box-shadow: var(--shadow-md); border: 1.5px solid var(--cream-200);
+    transition: box-shadow .2s, transform .2s;
+}
+.project-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+.project-img-wrap { height: 12rem; overflow: hidden; }
+.project-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.project-card:hover .project-img-wrap img { transform: scale(1.05); }
+.project-info { padding: 1.5rem; }
+.project-info h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--brown-800); margin-bottom: 0.5rem; }
+.project-info p { color: var(--brown-600); margin-bottom: 1rem; line-height: 1.6; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag { padding: 0.25rem 0.75rem; background-color: var(--cream-100); color: var(--brown-700); font-size: 0.875rem; font-weight: 500; border-radius: var(--radius-full); border: 1px solid var(--cream-200); }
+
+/* Footer */
+#contact { background: linear-gradient(135deg, #3d2510 0%, #5c3820 100%); color: var(--white); padding: 3rem 0; }
+.footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.footer-emoji { font-size: 3rem; margin-bottom: 1rem; }
+.footer-title { font-family: var(--font-display); font-size: 1.875rem; font-weight: 700; margin-bottom: 0.75rem; }
+.footer-tagline { color: var(--cream-200); margin-bottom: 2rem; }
+.social-links { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; }
+.social-btn {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1.5rem; background-color: rgba(255,255,255,.12);
+    border-radius: var(--radius-full); color: var(--white);
+    font-weight: 600; font-size: 0.875rem;
+    transition: background-color .15s, transform .15s;
+}
+.social-btn:hover { background-color: var(--amber-500); transform: translateY(-3px); }
+.footer-copy { color: var(--cream-200); font-size: 0.875rem; }
+
+/* Animations */
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp   { from { opacity: 0; transform: translateY(20px);  } to { opacity: 1; transform: translateY(0); } }
+
+/* Responsive */
+@media (min-width: 640px) {
+    .section-title { font-size: 3rem; }
+    .hero-title { font-size: 3.75rem; }
+    .hero-subtitle { font-size: 1.5rem; }
+}
+@media (min-width: 768px) {
+    .nav-desktop { display: flex; }
+    .hamburger { display: none; }
+    .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 1024px) {
+    .container { padding: 0 2rem; }
+    .hero-title { font-size: 4.5rem; }
+    .projects-grid { grid-template-columns: repeat(3, 1fr); }
+}
+    </style>
+</head>
+<body>
+
+<header id="site-header">
+    <div class="container header-inner">
+        <div class="logo">🧁 Ola's Bakery</div>
+        <nav class="nav-desktop">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#projects" class="nav-link">Signature Bakes</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <button id="hamburger-btn" class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </div>
+    <nav id="mobile-nav" class="nav-mobile" hidden>
+        <div class="container">
+            <a href="#home" class="nav-link mobile-link">Home</a>
+            <a href="#about" class="nav-link mobile-link">About</a>
+            <a href="#gallery" class="nav-link mobile-link">Gallery</a>
+            <a href="#projects" class="nav-link mobile-link">Signature Bakes</a>
+            <a href="#contact" class="nav-link mobile-link">Contact</a>
+        </div>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <div class="container hero-content">
+        <div class="hero-badge">✨ Baked with Love & Soul</div>
+        <h1 class="hero-title">Hi, I'm Ola</h1>
+        <p class="hero-subtitle">Here to give you a great taste — one delicious bite at a time.</p>
+        <div class="hero-pills">
+            <span class="hero-pill">🍰 Great Taste</span>
+            <span class="hero-pill">🥐 Great Treats</span>
+            <span class="hero-pill">🍽️ Great Meals</span>
+        </div>
+        <a href="#projects" class="hero-cta">See My Bakes 🧁</a>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-intro">
+            <p>I'm Ola — a passionate baker who believes food is love made edible. My mission is simple: to give you a great taste, help you make great treats, and let you enjoy great meals every single day. Every item that leaves my kitchen is crafted with the finest ingredients and a whole lot of heart.</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🍰</div>
+                <h3>Great Taste</h3>
+                <p>Every bite is crafted to delight your taste buds with rich, unforgettable flavours</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🥐</div>
+                <h3>Great Treats</h3>
+                <p>From croissants to celebration cakes — beautiful pastries made to make moments special</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🍽️</div>
+                <h3>Great Meals</h3>
+                <p>Enjoy savory pastries and artisan breads that turn any meal into a true experience</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="gallery">
+    <div class="container">
+        <h2 class="section-title">From the Kitchen</h2>
+        <p class="section-subtitle">A peek at some of my favourite baking moments and creations</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80" alt="Sourdough loaf" loading="lazy" />
+                <div class="gallery-caption">Sourdough Sunday</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80" alt="Chocolate cake" loading="lazy" />
+                <div class="gallery-caption">Chocolate Dream Cake</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80" alt="Croissants" loading="lazy" />
+                <div class="gallery-caption">Buttery Croissants</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&q=80" alt="Macarons" loading="lazy" />
+                <div class="gallery-caption">French Macarons</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="projects">
+    <div class="container">
+        <h2 class="section-title">My Signature Bakes</h2>
+        <p class="section-subtitle">These are some of my most-loved creations — each one crafted with the finest ingredients and a whole lot of heart.</p>
+        <div class="projects-grid" id="projects-grid"></div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="container footer-inner">
+        <div class="footer-emoji">🧁</div>
+        <h2 class="footer-title">Let's Connect</h2>
+        <p class="footer-tagline">Want to place an order or just say hello? Reach out — I'd love to hear from you!</p>
+        <div class="social-links">
+            <a href="#" class="social-btn">📸 Instagram</a>
+            <a href="#" class="social-btn">💬 WhatsApp</a>
+            <a href="mailto:ola@example.com" class="social-btn">✉️ Email</a>
+        </div>
+        <p class="footer-copy" id="footer-copy"></p>
+    </div>
+</footer>
+
+<script>
+// Mobile menu
+const hamburger = document.getElementById('hamburger-btn');
+const mobileNav = document.getElementById('mobile-nav');
+function closeMobileMenu() { mobileNav.hidden = true; hamburger.setAttribute('aria-expanded','false'); }
+hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    if (isOpen) { closeMobileMenu(); } else { mobileNav.hidden = false; hamburger.setAttribute('aria-expanded','true'); }
+});
+document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMobileMenu));
+window.addEventListener('resize', () => { if (window.innerWidth >= 768) closeMobileMenu(); }, { passive: true });
+
+// Header shadow
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 10 ? '0 2px 12px rgba(120,70,20,0.10)' : 'none';
+}, { passive: true });
+
+// Projects
+const projects = [
+    { title: 'Classic Sourdough Loaf', description: 'A slow-fermented sourdough with a crispy golden crust and chewy, open crumb. Made with organic flour to give you a great taste.', image: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800&q=80', tags: ['Bread','Sourdough','Artisan'] },
+    { title: 'Strawberry Layer Cake', description: 'Three layers of fluffy vanilla sponge filled with fresh strawberry compote and mascarpone cream — a celebration showstopper.', image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=80', tags: ['Cake','Celebration','Fruit'] },
+    { title: 'Butter Croissants', description: 'Laminated dough with 27 layers of butter for that perfect honeycomb interior and flaky shell. A great treat to enjoy any morning.', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80', tags: ['Pastry','Butter','Breakfast'] },
+    { title: 'Savoury Meat Pies', description: 'Flaky shortcrust pastry filled with rich, well-seasoned meat. The ultimate savoury pastry to enjoy as a great meal anytime.', image: 'https://images.unsplash.com/photo-1604579839200-ce65eb5d0f02?w=800&q=80', tags: ['Savoury','Pastry','Meals'] },
+    { title: 'French Macarons', description: 'Delicate almond shells with silky ganache fillings in seasonal flavours — rose, pistachio, salted caramel, and dark chocolate.', image: 'https://images.unsplash.com/photo-1558326567-98ae2405596b?w=800&q=80', tags: ['Macarons','French','Treats'] },
+    { title: 'Honey & Herb Focaccia', description: 'A dimpled, herb-studded focaccia drizzled with local honey and flaky sea salt. Enjoy it as a great savoury meal companion.', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80', tags: ['Bread','Savoury','Focaccia'] }
+];
+
+const grid = document.getElementById('projects-grid');
+projects.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'project-card';
+    card.innerHTML = `
+        <div class="project-img-wrap"><img src="${p.image}" alt="${p.title}" loading="lazy" /></div>
+        <div class="project-info">
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+            <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        </div>`;
+    grid.appendChild(card);
+});
+
+document.getElementById('footer-copy').textContent = '© ' + new Date().getFullYear() + " Ola's Bakery. All rights reserved.";
+</script>
+</body>
+  </html>
